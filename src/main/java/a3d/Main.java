@@ -1,3 +1,5 @@
+package a3d;
+
 public class Main
 {
     public static void main(String[] args)
@@ -10,16 +12,16 @@ public class Main
 /* Algo:
 
 Classes:
-    Rayon : point de depart(Vec3D), direction(Vec3D)
+    Rayon : point de depart(a3d.Vec3D), direction(a3d.Vec3D)
     Couleur : double B, double V, double R
     Scene : objects(ObjectList), sources(SourceList), ambianteLight(Couleur), findColor()
-    Source : position(Vec3D), couleur(Couleur), speculaire(Couleur)
+    Source : position(a3d.Vec3D), couleur(Couleur), speculaire(Couleur)
     Object : couleur(Couleur), speculaire(Couleur), coeffReflexion(double), computeIntersection()
 
 Pour tout les pixels (x,y) faire
 {
     construire le rayon primaire( point de depart (0,0,0), direction(x, y, -D))
-    Couleur c = scene.findColor(rayon);
+    Couleur c = a3d.scene.findColor(rayon);
     image[x][y] = c;
 }
 
@@ -41,12 +43,12 @@ Couleur findColor(Rayon rayon, int niveau)
         }
     }
 
-    Vec3D p = rayon.depart + minLambda * rayon.direction;
-    Couleur c = object.couleur * this.ambianteLight;
+    a3d.Vec3D p = rayon.depart + minLambda * rayon.direction;
+    Couleur c = a3d.object.couleur * this.ambianteLight;
 
     Pour toutes les sources s this.sources faire
     {
-        Vec3D lightDir = s.position - p;
+        a3d.Vec3D lightDir = s.position - p;
         Rayon ombrage = new Rayon( p , s.position - p);
         boolean visible = true;
 
@@ -60,13 +62,13 @@ Couleur findColor(Rayon rayon, int niveau)
         }
         if(visible)
         {
-            c+= s.couleur * object.couleur * (normale . (lightDir / normeLightDir));
+            c+= s.couleur * a3d.object.couleur * (normale . (lightDir / normeLightDir));
             h = lightDir - (p / normeP);
-            c+= s.speculaire * object.speculaire * normale . h;
+            c+= s.speculaire * a3d.object.speculaire * normale . h;
         }
 
         Rayon ref = new Rayon(p, rayon.direction - 2( normale . rayon.direction) . normale;
-        c+= object.coeffReflexion * this.findColor(ref, niveau + 1);
+        c+= a3d.object.coeffReflexion * this.findColor(ref, niveau + 1);
 
         return c;
 

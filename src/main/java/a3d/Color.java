@@ -1,5 +1,7 @@
+package a3d;
+
 /**
- *  Basic class to represent a Color.
+ *  Basic class to represent a a3d.Color.
  *  @author HERVOUET Léo
  *  @version 1.0
  */

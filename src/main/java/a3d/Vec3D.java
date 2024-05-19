@@ -1,3 +1,5 @@
+package a3d;
+
 /**
  *  Basic class to represent 3-vectors.
  *  Based on the Vec3f class of Philippe Meseure.

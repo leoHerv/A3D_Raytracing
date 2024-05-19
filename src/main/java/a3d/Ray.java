@@ -1,3 +1,5 @@
+package a3d;
+
 /**
  *  Basic class to represent a ray.
  *  @author HERVOUET Léo
