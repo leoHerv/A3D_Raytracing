@@ -34,6 +34,7 @@ public class Plane extends Object
      */
     @Override
     public Double computeIntersection(Vec3D ray) {
+        // TODO
         return null;
     }
 }
