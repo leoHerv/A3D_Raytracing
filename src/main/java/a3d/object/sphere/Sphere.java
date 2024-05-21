@@ -1,6 +1,7 @@
 package a3d.object.sphere;
 
 import a3d.Color;
+import a3d.Ray;
 import a3d.Vec3D;
 import a3d.object.Object;
 
@@ -11,19 +12,17 @@ import a3d.object.Object;
  */
 public class Sphere extends Object
 {
-    private final double m_center;
     private final double m_radius;
 
     /** A Sphere with a color, a specular color, a coefficient of reflection, a center and a radius.
+     *  @param position       The position of the sphere.
      *  @param color          The color of the sphere.
      *  @param specular       The specular color of the sphere.
      *  @param coeffRefection The reflection of the sphere.
-     *  @param center         The center of the sphere.
      *  @param radius         The radius of the sphere.
      */
-    public Sphere(Color color, Color specular, double coeffRefection, double center, double radius) {
-        super(color, specular, coeffRefection);
-        m_center = center;
+    public Sphere(Vec3D position, Color color, Color specular, double coeffRefection, double radius) {
+        super(position, color, specular, coeffRefection);
         m_radius = radius;
     }
 
@@ -33,7 +32,7 @@ public class Sphere extends Object
      *  @return A value if an intersection exist else return null.
      */
     @Override
-    public Double computeIntersection(Vec3D ray) {
+    public Double computeIntersection(Ray ray) {
         // TODO
         return null;
     }

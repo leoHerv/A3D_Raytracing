@@ -7,8 +7,8 @@ package a3d;
  */
 public class Ray
 {
-    private final Vec3D m_startingPoint;
-    private final Vec3D m_direction;
+    public final Vec3D m_startingPoint;
+    public final Vec3D m_direction;
 
     public Ray(Vec3D startingPoint, Vec3D direction)
     {

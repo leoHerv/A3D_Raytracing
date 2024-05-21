@@ -110,6 +110,19 @@ public class Vec3D
     }
 
     /**
+     *  Normalize a vector.
+     *  @param v Any vector.
+     *  @return A new vector.
+     */
+    static public Vec3D normalize(Vec3D v)
+    {
+        double l = v.lengthSquare();
+        if (l == 0.0) return v;
+        l = Math.sqrt(l);
+        return scale(v, 1.0 / l);
+    }
+
+    /**
      * Add a vector to current vector
      * @param that any vector
      * @return current vector
@@ -120,6 +133,16 @@ public class Vec3D
         this.y += that.y;
         this.z += that.z;
         return this;
+    }
+
+    /** Add a vector to another vector.
+     *  @param v1 Any vector.
+     *  @param v2 Any vector.
+     *  @return The new vector.
+     */
+    static public Vec3D add(final Vec3D v1, final Vec3D v2)
+    {
+        return new Vec3D(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
     }
 
     /**
@@ -149,6 +172,16 @@ public class Vec3D
         return this;
     }
 
+    /** Subtract a vector with another vector.
+     *  @param v1 Any vector.
+     *  @param v2 Any vector.
+     *  @return The new vector.
+     */
+    static public Vec3D sub(final Vec3D v1, final Vec3D v2)
+    {
+        return new Vec3D(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
+    }
+
     /**
      * Subtract two vectors and put result into current vector
      * @param v1 any vector
@@ -174,6 +207,16 @@ public class Vec3D
         this.y *= scale;
         this.z *= scale;
         return this;
+    }
+
+    /** Scale a vector.
+     *  @param v Any vector.
+     *  @param scale Uniform scale factor
+     *  @return The new vector.
+     */
+    static public Vec3D scale(final Vec3D v, final double scale)
+    {
+        return new Vec3D(v.x * scale, v.y * scale, v.z * scale);
     }
 
     /**
@@ -231,6 +274,16 @@ public class Vec3D
         this.y += scale * that.y;
         this.z += scale * that.z;
         return this;
+    }
+
+    /** Divide a vector with another vector.
+     *  @param v1 Any vector.
+     *  @param v2 Any vector.
+     *  @return The new vector.
+     */
+    static public Vec3D div(final Vec3D v1, final Vec3D v2)
+    {
+        return new Vec3D(v1.x / v2.x, v1.y / v2.y, v1.z / v2.z);
     }
 
     /**
