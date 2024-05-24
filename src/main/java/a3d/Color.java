@@ -26,32 +26,31 @@ public class Color
         A = a;
     }
 
+    private double minMax(double v)
+    {
+        if(v > 1){
+            return 1;
+        }
+        else if(v < 0){
+            return 0;
+        }
+        else{
+            return v;
+        }
+    }
+
     public Color add(Color c)
     {
-        if(B + c.B > 1){
-            B = 1;
-        }
-        else{
-            B += c.B;
-        }
-        if(G + c.G > 1){
-            G = 1;
-        }
-        else{
-            G += c.G;
-        }
-        if(R + c.R > 1){
-            R = 1;
-        }
-        else{
-            R += c.R;
-        }
-        if(A + c.A > 1){
-            A = 1;
-        }
-        else{
-            A += c.A;
-        }
+        B += c.B;
+        G += c.G;
+        R += c.R;
+        A += c.A;
+
+        B = minMax(B);
+        G = minMax(G);
+        R = minMax(R);
+        A = minMax(A);
+
         return this;
     }
 
@@ -67,6 +66,11 @@ public class Color
         R *= value;
         A *= value;
         return this;
+    }
+
+    static public Color multiply(final Color c, final double v)
+    {
+        return new Color(c.B * v, c.G * v, c.R * v, c.A * v);
     }
 
 

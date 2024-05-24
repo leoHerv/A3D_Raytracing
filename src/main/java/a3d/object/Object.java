@@ -36,4 +36,10 @@ public abstract class Object
      *  @return A value if an intersection exist else return null.
      */
     public abstract Double computeIntersection(Ray ray);
+
+    /** Give the normal to the intersection with the object.
+     *  @param intersection The intersection use to have the normal.
+     *  @return The normal.
+     */
+    public abstract Vec3D computeIntersectionNormal(Vec3D intersection);
 }

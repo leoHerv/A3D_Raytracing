@@ -80,9 +80,9 @@ public class Main
                 Ray ray = new Ray(new Vec3D(0, 0, 0), new Vec3D(x, y, -1));
                 Color color = basicScene.findColor(ray,0);
 
-                buffer[index] =   (byte)(color.B * 255);   // blue
-                buffer[index+1] = (byte)(color.G * 255); // green
-                buffer[index+2] = (byte)(color.R * 255); // red
+                buffer[index] =   (byte)(color.B * (double)255); // blue
+                buffer[index+1] = (byte)(color.G * (double)255); // green
+                buffer[index+2] = (byte)(color.R * (double)255); // red
             }
         }
         try {

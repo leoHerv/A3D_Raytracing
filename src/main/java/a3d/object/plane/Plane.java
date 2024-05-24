@@ -41,8 +41,18 @@ public class Plane extends Object
         if(division == 0){
             return null;
         }
-        double a = m_position.dotProduct(m_normal);
-        double p = ray.m_startingPoint.dotProduct(m_normal);
-        return (a - p) / division;
+        return (m_position.dotProduct(m_normal) - ray.m_startingPoint.dotProduct(m_normal)) / division;
     }
+
+    /** Give the normal to the intersection with the plane.
+     *  @param intersection The intersection use to have the normal.
+     *  @return The normal.
+     */
+    @Override
+    public Vec3D computeIntersectionNormal(Vec3D intersection)
+    {
+        return Vec3D.sub(m_normal, intersection).normalize();
+    }
+
+
 }

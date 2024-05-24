@@ -283,7 +283,19 @@ public class Vec3D
      */
     static public Vec3D div(final Vec3D v1, final Vec3D v2)
     {
-        return new Vec3D(v1.x / v2.x, v1.y / v2.y, v1.z / v2.z);
+        double nx = 0;
+        double ny = 0;
+        double nz = 0;
+        if(v2.x != 0){
+            nx = v1.x / v2.x;
+        }
+        if(v2.y != 0){
+            ny =v1.y / v2.y;
+        }
+        if(v2.z != 0){
+            nz = v1.z / v2.z;
+        }
+        return new Vec3D(nx, ny, nz);
     }
 
     /**
