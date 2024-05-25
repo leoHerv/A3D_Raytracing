@@ -3,6 +3,7 @@ package a3d.scene.scenes;
 import a3d.Color;
 import a3d.Vec3D;
 import a3d.object.plane.Plane;
+import a3d.object.plane.PlaneCheckerboard;
 import a3d.object.sphere.Sphere;
 import a3d.object.sphere.light.Light;
 import a3d.scene.Scene;
@@ -26,9 +27,10 @@ public class BasicScene extends Scene
         Color yellow = new Color(0, 1, 1, 1);
         Color cyan = new Color(1, 1, 0, 1);
         Color pink = new Color(1, 0, 1, 1);
+        Color purple = new Color(1, 0, 0.6, 1);
         Color white = new Color(1, 1, 1, 1);
         Color lowWhite = new Color(0.1, 0.1, 0.1, 1);
-        Color highwhite = new Color(0.8, 0.8, 0.8, 1);
+        Color highWhite = new Color(0.8, 0.8, 0.8, 1);
         Color black = new Color(0, 0, 0, 1);
 
         //=== Objects ===//
@@ -36,40 +38,50 @@ public class BasicScene extends Scene
 
         // Bottom plane.
         Vec3D posBottom = new Vec3D(0, -1, 0);
-        Vec3D normalBottom = new Vec3D(0, 1, 0);
-        m_objects.add(new Plane(posBottom, blue, highwhite, 0.5, normalBottom));
+        Vec3D normalBottom = new Vec3D(0, 1, 0.2);
+        m_objects.add(new PlaneCheckerboard(posBottom, blue, white, highWhite, 0.01, normalBottom, 0.1, 1));
 
-        /*
         // Top plane.
         Vec3D posTop = new Vec3D(0, 1, 0);
         Vec3D normalTop = new Vec3D(0, -1, 0);
-        m_objects.add(new Plane(posTop, green, lowWhite, 0.5, normalTop));
-         */
+        m_objects.add(new Plane(posTop, green, highWhite, 0.01, normalTop, 1));
 
         // Left plane.
         Vec3D posLeft = new Vec3D(-1, -10, -10);
         Vec3D normalLeft = new Vec3D(1, 0, 0);
-        m_objects.add(new Plane(posLeft, red, lowWhite, 0.5, normalLeft));
+        m_objects.add(new PlaneCheckerboard(posLeft, red, white, highWhite, 0.01, normalLeft, 0.1, 1));
 
         // Right plane.
         Vec3D posRight = new Vec3D(1, 10, 10);
         Vec3D normalRight = new Vec3D(-1, 0, 0);
-        m_objects.add(new Plane(posRight, yellow, lowWhite, 0.5, normalRight));
+        m_objects.add(new Plane(posRight, yellow, highWhite, 0.01, normalRight, 1));
 
         // Front plane.
         Vec3D posFront = new Vec3D(0, 0, -4);
-        Vec3D normalFront = new Vec3D(0, 0, -1);
-        m_objects.add(new Plane(posFront, cyan, lowWhite, 0.5, normalFront));
+        Vec3D normalFront = new Vec3D(0, 0, 1);
+        m_objects.add(new Plane(posFront, cyan, highWhite, 0.01, normalFront, 1));
 
+        // Back plane.
+        Vec3D posBack = new Vec3D(0, 0, 2);
+        Vec3D normalBack = new Vec3D(0, 0, -1);
+        m_objects.add(new Plane(posBack, purple, highWhite, 0.01, normalBack, 1));
 
-        // A Ball.
+        // Balls.
         Vec3D posBall = new Vec3D(0, 0, -3);
-        m_objects.add(new Sphere(posBall, pink, lowWhite, 0.5, 0.5));
+        m_objects.add(new Sphere(posBall, pink, highWhite, 0.1, 0.2, 1.5));
+
+        Vec3D posBall1 = new Vec3D(-0.6, 0, -3);
+        m_objects.add(new Sphere(posBall1, lowWhite, highWhite, 0.9, 0.2, 1));
+
+        Vec3D posBall2 = new Vec3D(0.6, 0, -3);
+        m_objects.add(new Sphere(posBall2, black, highWhite, 0.9, 0.2, 4));
+
 
         //=== Lights ===//
-        m_lights.add(new Light(new Vec3D(0.99, 8, 0.5), highwhite, lowWhite, 1));
-        m_lights.add(new Light(new Vec3D(-0.99, 8, 0.5), highwhite, lowWhite, 1));
-        m_lights.add(new Light(new Vec3D(0, 8, 2), highwhite, lowWhite, 1));
-        //m_lights.add(new Light(new Vec3D(0, 0, 0), highwhite, lowWhite, 1));
+        //m_lights.add(new Light(new Vec3D(0.99, 8, 0.5), highWhite, lowWhite, 1));
+        //m_lights.add(new Light(new Vec3D(-0.99, 8, 0.5), highWhite, lowWhite, 1));
+        //m_lights.add(new Light(new Vec3D(0, 8, 2), highWhite, lowWhite, 1));
+        this.addLight(new Light(new Vec3D(0.3, 0.3, -1.5), white, lowWhite));
+        //this.addLight(new Light(new Vec3D(-0.3, 0.2, -1.5), white, lowWhite));
     }
 }
