@@ -12,16 +12,17 @@ import a3d.object.Object;
  */
 public class Plane extends Object
 {
-    private final Vec3D m_normal;
+    protected final Vec3D m_normal;
 
     /** A Plane with a color, a specular color and a coefficient of reflection.
-     *  @param color          The color of the plane.
-     *  @param specular       The specular color of the plane.
+     *  @param color           The color of the plane.
+     *  @param specular        The specular color of the plane.
      *  @param coeffReflection The reflection of the plane.
-     *  @param normal         The normal to the point of the plane.
+     *  @param normal          The normal to the point of the plane.
+     *  @param shininess       The shininess of the plane.
      */
-    public Plane(Vec3D position, Color color, Color specular, double coeffReflection, Vec3D normal) {
-        super(position, color, specular, coeffReflection);
+    public Plane(Vec3D position, Color color, Color specular, double coeffReflection, Vec3D normal, double  shininess) {
+        super(position, color, specular, coeffReflection, shininess);
         m_normal = normal;
     }
 
@@ -51,8 +52,6 @@ public class Plane extends Object
     @Override
     public Vec3D computeIntersectionNormal(Vec3D intersection)
     {
-        return Vec3D.sub(m_normal, intersection).normalize();
+        return new Vec3D(m_normal).normalize();
     }
-
-
 }
