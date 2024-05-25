@@ -73,6 +73,17 @@ public class Color
         return new Color(c.B * v, c.G * v, c.R * v, c.A * v);
     }
 
+    public Color div(final double value)
+    {
+        if(value != 0){
+            B /= value;
+            G /= value;
+            R /= value;
+            A /= value;
+        }
+        return this;
+    }
+
 
 
 }
