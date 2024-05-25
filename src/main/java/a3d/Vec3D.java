@@ -350,5 +350,20 @@ public class Vec3D
         this.z = v1.x * v2.y - v1.y * v2.x;
         return this;
     }
+
+    /**
+     * Fill current vector with the cross product of two vectors.
+     * Take care of parameters order, cross-product is anti-commutative!
+     * @param v1 First vector
+     * @param v2 Second vector
+     * @return current vector, filled with cross product v1*v2
+     */
+    public static Vec3D crossProduct(final Vec3D v1, final Vec3D v2)
+    {
+        double x = v1.y * v2.z - v1.z * v2.y;
+        double y = v1.z * v2.x - v1.x * v2.z; // take care of this value !!
+        double z = v1.x * v2.y - v1.y * v2.x;
+        return new Vec3D(x, y, z);
+    }
 }
 
