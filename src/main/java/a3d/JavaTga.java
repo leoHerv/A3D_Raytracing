@@ -55,9 +55,6 @@ public class JavaTga
 
         fout.close();
     }
-
-    
-    
     
     /**
      * @param args no command line arguments
