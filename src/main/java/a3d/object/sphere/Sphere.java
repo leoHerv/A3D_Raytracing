@@ -33,7 +33,61 @@ public class Sphere extends Object
      */
     @Override
     public Double computeIntersection(Ray ray) {
-        // TODO
-        return null;
+        Vec3D P = ray.m_startingPoint; // Point of the ray.
+        Vec3D dir = ray.m_direction; // Direction of the ray.
+        Vec3D C = m_position; // Center
+        Vec3D CP = Vec3D.sub(P, C);
+
+
+        double alpha = dir.dotProduct(dir);
+        //double beta = dir.dotProduct(P) - dir.dotProduct(C);
+        double beta = 2 * dir.dotProduct(CP);
+        double omega = CP.dotProduct(CP) - m_radius * m_radius;
+
+        double delta = beta * beta - 4 * alpha * omega;
+
+        if(delta == 0){
+            return (-beta) / (2 * alpha);
+        }
+        else if(delta > 0){
+            double racineDelta = Math.sqrt(delta);
+            double r1 = (-beta + racineDelta) / (2 * alpha);
+            double r2 = (-beta - racineDelta) / (2 * alpha);
+            return minPositive(r1, r2);
+        }
+        else{
+            return null;
+        }
+    }
+
+    /** Give the min positive value.
+     * @param a The first value.
+     * @param b The second value.
+     * @return The minimum positive value.
+     */
+    private static Double minPositive(double a, double b)
+    {
+        // If the values are negative.
+        if (a < 0 && b < 0) {
+            return null;
+        }
+        // If just one value is positive.
+        if (a >= 0 && b < 0) {
+            return a;
+        }
+        if (a < 0 && b >= 0) {
+            return b;
+        }
+        // If both values are positive.
+        return Math.min(a, b);
+    }
+
+    /** Give the normal to the intersection with the sphere.
+     *  @param intersection The intersection use to have the normal.
+     *  @return The normal.
+     */
+    @Override
+    public Vec3D computeIntersectionNormal(Vec3D intersection) {
+        return Vec3D.sub(intersection, m_position).normalize();
     }
 }
