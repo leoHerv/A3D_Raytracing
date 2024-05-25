@@ -20,9 +20,10 @@ public class Sphere extends Object
      *  @param specular       The specular color of the sphere.
      *  @param coeffRefection The reflection of the sphere.
      *  @param radius         The radius of the sphere.
+     *  @param shininess      The shininess of the sphere.
      */
-    public Sphere(Vec3D position, Color color, Color specular, double coeffRefection, double radius) {
-        super(position, color, specular, coeffRefection);
+    public Sphere(Vec3D position, Color color, Color specular, double coeffRefection, double radius, double shininess) {
+        super(position, color, specular, coeffRefection, shininess);
         m_radius = radius;
     }
 
