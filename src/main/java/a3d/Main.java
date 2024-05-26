@@ -1,7 +1,9 @@
 package a3d;
 
 import a3d.scene.Scene;
+import a3d.scene.scenes.BallsScene;
 import a3d.scene.scenes.BasicScene;
+import a3d.scene.scenes.MirrorScene;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +16,7 @@ import java.util.stream.IntStream;
 
 public class Main
 {
-    public static final boolean ENABLE_HDR = false;
+    public static final boolean ENABLE_HDR = true;
     public static final int ANTI_ALIASING_SAMPLES_NB = 8;
     public static final int REFLECTION_NB = 10;
 
@@ -85,7 +87,13 @@ public class Main
         byte buffer[] = new byte[3 * w * h];
         double bufferHDR[] = new double[3 * w * h];
 
-        Scene basicScene = new BasicScene();
+        /*=== The different scenes possible in this project ===*/
+
+        Scene scene = new BasicScene();
+        //Scene scene = new BallsScene();
+        //Scene scene = new MirrorScene();
+
+        /*=====================================================*/
 
         int samples = ANTI_ALIASING_SAMPLES_NB; // Number of samples for anti-aliasing
 
@@ -109,7 +117,7 @@ public class Main
                     double y = ((double)col + (j + 0.5) / samples - (double)h / 2D) / (double)w;
 
                     Ray ray = new Ray(new Vec3D(0, 0, 0), new Vec3D(x, y, -1));
-                    colors[sampleIndex++] = basicScene.findColor(ray, 0);
+                    colors[sampleIndex++] = scene.findColor(ray, 0);
                 }
             }
 
@@ -149,7 +157,7 @@ public class Main
         });
 
         try {
-            saveTGA("basicScene.tga", buffer, w, h);
+            saveTGA("BasicScene_HDR_ON.tga", buffer, w, h);
         } catch (Exception e) {
             System.err.println("TGA file not created :" + e);
         }

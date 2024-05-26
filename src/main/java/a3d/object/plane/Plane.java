@@ -21,7 +21,7 @@ public class Plane extends Object
      *  @param normal          The normal to the point of the plane.
      *  @param shininess       The shininess of the plane.
      */
-    public Plane(Vec3D position, Color color, Color specular, double coeffReflection, Vec3D normal, double  shininess) {
+    public Plane(Vec3D position, Color color, Color specular, double coeffReflection, Vec3D normal, double shininess) {
         super(position, color, specular, coeffReflection, shininess);
         m_normal = normal;
     }

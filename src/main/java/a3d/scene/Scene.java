@@ -17,12 +17,25 @@ import static a3d.Main.REFLECTION_NB;
  */
 public class Scene {
 
-    public static final int LEVEL_MAX = REFLECTION_NB;
     public static final double EPSILON = 0.001;
     public static final double SHADOW_COLOR_DIVIDER = 8;
     protected ArrayList<Object> m_objects;
     protected ArrayList<Light> m_lights;
     protected final Color m_ambientLight;
+
+    /*=== COLORS ===*/
+
+    public static final Color BLUE = new Color(1, 0, 0, 1);
+    public static final Color GREEN = new Color(0, 1, 0, 1);
+    public static final Color RED = new Color(0, 0, 1, 1);
+    public static final Color YELLOW = new Color(0, 1, 1, 1);
+    public static final Color CYAN = new Color(1, 1, 0, 1);
+    public static final Color PINK = new Color(1, 0, 1, 1);
+    public static final Color PURPLE = new Color(1, 0, 0.15, 1);
+    public static final Color WHITE = new Color(1, 1, 1, 1);
+    public static final Color LOW_WHITE = new Color(0.1, 0.1, 0.1, 1);
+    public static final Color HIGH_WHITE = new Color(0.8, 0.8, 0.8, 1);
+    public static final Color BLACK = new Color(0, 0, 0, 1);
 
     /** A scene that containt objects, light sources and have an ambient light.
      *  @param ambientLight The ambient light of the scene.
@@ -41,7 +54,7 @@ public class Scene {
      */
     public Color findColor(Ray ray, int level)
     {
-        if(level > LEVEL_MAX)
+        if(level > REFLECTION_NB)
         {
             return new Color(0, 0, 0, 0);
         }

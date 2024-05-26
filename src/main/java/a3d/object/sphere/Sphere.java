@@ -39,9 +39,7 @@ public class Sphere extends Object
         Vec3D C = m_position; // Center
         Vec3D CP = Vec3D.sub(P, C);
 
-
         double alpha = dir.dotProduct(dir);
-        //double beta = dir.dotProduct(P) - dir.dotProduct(C);
         double beta = 2 * dir.dotProduct(CP);
         double omega = CP.dotProduct(CP) - m_radius * m_radius;
 
