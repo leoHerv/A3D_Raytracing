@@ -1,5 +1,3 @@
-## By HERVOUET Léo
-
 # A3D Project
 
 In this project I managed to make the raytracing works.  
